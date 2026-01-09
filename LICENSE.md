@@ -1,4 +1,4 @@
-#### Copyright © 2020 / [Alexandre Botare](https://github.com/astronnng)
+#### Copyright © 2026 / [Alexandre Botare](https://github.com/astronnng)
 
 A permissão é concedida, gratuitamente, a qualquer pessoa que obtenha uma cópia deste arquivo, sem restrição nos direitos de usar, copiar, modificar e mesclar.
 

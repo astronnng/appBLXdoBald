@@ -72,9 +72,9 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
     </td>
     <td align="center">
       <a href="#" title="defina o título do link">
-        <img src="https://pbs.twimg.com/media/FyLij00XsAEPcHq.jpg" width="100px;" alt="Foto do yasuo do vasco"/><br>
+        <img src="https://media.discordapp.net/attachments/1257661583732244500/1459188676436299776/59293832.png?ex=69625eda&is=69610d5a&hm=b2de8d7f22e00a6d7d8efc476ae338d5f07b8a9149f196a74c28986bc6dfe1f3&=&format=webp&quality=lossless&width=499&height=499" width="100px;" alt="Foto do yasuo do vasco"/><br>
         <sub>
-          <b>Yasuo do vasco</b>
+          <b>Cadu do vasco</b>
         </sub>
       </a>
       </td>

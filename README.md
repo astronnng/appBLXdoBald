@@ -1,72 +1,54 @@
 # appBLXdoBald
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/iuricode/README-template?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/iuricode/README-template?style=for-the-badge)
+![GitHub language count](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white)
 ![GitHub forks](https://img.shields.io/github/forks/iuricode/README-template?style=for-the-badge)
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/iuricode/README-template?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/iuricode/README-template?style=for-the-badge)
 
-<img src="imagem.png" alt="Exemplo imagem">
+# Mascote do projeto.
 
-> Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. Não exagere, as pessoas não vão ler.
+
+<img src="repositorio_arq/imagem.png" alt="Mascote do projeto">
+
+> App simples de vendas de produtos usando Python e FastAPI.
 
 ### Ajustes e melhorias
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas para as seguintes tarefas:
 
-- [x] Tarefa 1
-- [x] Tarefa 2
-- [x] Tarefa 3
-- [ ] Tarefa 4
-- [ ] Tarefa 5
+- [x] Criação do backend e classes
+- [x] Configurando API para requests
+- [ ] Modelagem de dados para interface
+- [ ] Testes de qualidade para estailidade
+- [ ] Finalização do projeto
 
 ## 💻 Pré-requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
-- Você instalou a versão mais recente de `<linguagem / dependência / requeridos>`
-- Você tem uma máquina `<Windows / Linux / Mac>`. Indique qual sistema operacional é compatível / não compatível.
-- Você leu `<guia / link / documentação_relacionada_ao_projeto>`.
+- Você instalou a versão mais recente de `<python / pydantic / BaseModel / Optional>`
+- Você tem uma máquina `<Windows / Linux / Mac>`. Compativel com todos os OS.
 
-## 🚀 Instalando <nome_do_projeto>
+## ☕ Usando <appBLXdoBald>
 
-Para instalar o <nome_do_projeto>, siga estas etapas:
-
-Linux e macOS:
+Para usar <appBLXdoBald>, siga estas etapas:
 
 ```
-<comando_de_instalação>
+Suba seu FastAPI com ambiente env em Pyhton e use o insonimia ou Postman para estar realizando requisições
 ```
 
-Windows:
+## 📫 Contribuindo para <appBLXdoBald>
 
-```
-<comando_de_instalação>
-```
-
-## ☕ Usando <nome_do_projeto>
-
-Para usar <nome_do_projeto>, siga estas etapas:
-
-```
-<exemplo_de_uso>
-```
-
-Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Forneça uma referência de opções para pontos de bônus!
-
-## 📫 Contribuindo para <nome_do_projeto>
-
-Para contribuir com <nome_do_projeto>, siga estas etapas:
+Para contribuir com <appBLXdoBald>, siga estas etapas:
 
 1. Bifurque este repositório.
 2. Crie um branch: `git checkout -b <nome_branch>`.
 3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
-4. Envie para o branch original: `git push origin <nome_do_projeto> / <local>`
+4. Envie para o branch original: `git push origin <appBLXdoBald> / <local>`
 5. Crie a solicitação de pull.
 
-Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
-
-## 🤝 Colaboradores
+## 🤝 Los cuatro melhores
 
 Agradecemos às seguintes pessoas que contribuíram para este projeto:
 
@@ -74,25 +56,33 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
   <tr>
     <td align="center">
       <a href="#" title="defina o título do link">
-        <img src="https://avatars3.githubusercontent.com/u/31936044" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
+        <img src="https://pbs.twimg.com/profile_images/1840032466981052416/Y812LtWV.jpg" width="100px;" alt="Foto do rengar"/><br>
         <sub>
-          <b>Iuri Silva</b>
+          <b>Alexandre Rengar</b>
         </sub>
       </a>
     </td>
     <td align="center">
       <a href="#" title="defina o título do link">
-        <img src="https://s2.glbimg.com/FUcw2usZfSTL6yCCGj3L3v3SpJ8=/smart/e.glbimg.com/og/ed/f/original/2019/04/25/zuckerberg_podcast.jpg" width="100px;" alt="Foto do Mark Zuckerberg"/><br>
+        <img src="https://i.imgur.com/hTMg2Kt.jpeg" width="80px;" alt="Foto do jhin do alan"/><br>
         <sub>
-          <b>Mark Zuckerberg</b>
+          <b>Jhin Opressor</b>
         </sub>
       </a>
     </td>
     <td align="center">
       <a href="#" title="defina o título do link">
-        <img src="https://miro.medium.com/max/360/0*1SkS3mSorArvY9kS.jpg" width="100px;" alt="Foto do Steve Jobs"/><br>
+        <img src="https://pbs.twimg.com/media/FyLij00XsAEPcHq.jpg" width="100px;" alt="Foto do yasuo do vasco"/><br>
         <sub>
-          <b>Steve Jobs</b>
+          <b>Yasuo do vasco</b>
+        </sub>
+      </a>
+      </td>
+    <td align="center">
+      <a href="#" title="defina o título do link">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnamLoOyC8j5lENbcDFLAc-IqiiCdTAEqMGQ&s" width="80px;" alt="Foto do Delfito pelado"/><br>
+        <sub>
+          <b>Bruno delfyters</b>
         </sub>
       </a>
     </td>

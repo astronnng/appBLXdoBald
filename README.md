@@ -13,7 +13,7 @@
 
 > App simples de vendas de produtos usando Python e FastAPI.
 
-### Ajustes e melhorias
+### Ajustes e melhorias - miau
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas para as seguintes tarefas:
 

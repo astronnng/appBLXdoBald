@@ -3,8 +3,8 @@ from typing import Annotated
 from fastapi import Depends
 
 # Nome e URL do banco de dados (neste caso, SQLite)
-sqlite_file_name = "blx_banco.db"
-sqlite_url = f"sqlite:///{sqlite_file_name}"
+Base = "blx_banco.db"
+sqlite_url = f"sqlite:///{Base}"
 
 # O connect_args é necessário apenas para o SQLite
 connect_args = {"check_same_thread": False}

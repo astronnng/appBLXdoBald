@@ -20,6 +20,6 @@ def criar_produto(produto: Produtos, db: Session = Depends(get_session)):
 
 
 @app.get("/produtos")
-def listar_produtos():
-    return {'Msg': 'Listagem de produtos'}
+def listar_produtos(db: Session = Depends(get_session)):
+    return RepositorioProduto(db).listar()
 

@@ -4,6 +4,8 @@ from src.repositorios.produto import RepositorioProduto
 from sqlalchemy.orm import Session
 from src.config.database import get_session
 from src.config.database import create_db_and_tables
+from src.schemas.schemas import Usuario
+from src.repositorios.usuarios import RepositorioUsuario
 
 create_db_and_tables()
 
@@ -22,4 +24,14 @@ def criar_produto(produto: Produtos, db: Session = Depends(get_session)):
 @app.get("/produtos")
 def listar_produtos(db: Session = Depends(get_session)):
     return RepositorioProduto(db).listar()
+
+
+@app.post("/usuarios")
+def criar_usuario(usuario: Usuario, db: Session = Depends(get_session)):
+    return RepositorioUsuario(db).criar(usuario)
+
+
+@app.get("/usuarios")
+def listar_usuarios(db: Session = Depends(get_session)):
+    return RepositorioUsuario(db).listar()
 

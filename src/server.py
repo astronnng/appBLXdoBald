@@ -14,7 +14,8 @@ app = FastAPI()
 
 @app.post("/produtos")
 def criar_produto(produto: Produtos, db: Session = Depends(get_session)):
-    produto_criado: RepositorioProduto().criar(produto, db)
+    # Certifique-se de que a variável recebe o resultado da função
+    produto_criado = RepositorioProduto(db).criar(produto)
     return produto_criado
 
 

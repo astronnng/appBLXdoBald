@@ -5,7 +5,7 @@ from typing import List
 
 class Produtos(BaseModel):
     id: Optional[str] = None
-    Usuario: 'Usuario'
+    Usuario: Optional['Usuario'] = None
     nome: str
     detalhes: str
     preco: float

@@ -3,6 +3,9 @@ from src.schemas.schemas import Produtos
 from src.repositorios.produto import RepositorioProduto
 from sqlalchemy.orm import Session
 from src.config.database import get_session
+from src.config.database import create_db_and_tables
+
+create_db_and_tables()
 
 app = FastAPI()
 

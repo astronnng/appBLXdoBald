@@ -37,6 +37,73 @@ Para usar <appBLXdoBald>, siga estas etapas:
 Suba seu FastAPI com ambiente env em Pyhton e use o insonimia ou Postman para estar realizando requisições
 ```
 
+## 📦 Exemplos de Requisições
+
+Com base nos modelos definidos em `src/models/models.py`, a API oferece as seguintes entidades:
+
+- **Produto** (`/produtos`)
+- **Usuário** (`/usuarios`)
+- **Pedido** (`/pedidos`)
+
+### Criar um Produto
+
+```bash
+curl -X POST "http://localhost:8000/produtos" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nome": "Camiseta",
+    "descricao": "Camiseta 100% algodão",
+    "preco": 49.90,
+    "disponivel": true,
+    "usuario_id": 1
+  }'
+```
+
+### Listar Produtos
+
+```bash
+curl -X GET "http://localhost:8000/produtos"
+```
+
+### Criar um Usuário
+
+```bash
+curl -X POST "http://localhost:8000/usuarios" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "nome": "João Silva",
+    "telefone": "11999998888",
+    "senha": "senha123"
+  }'
+```
+
+### Listar Usuários
+
+```bash
+curl -X GET "http://localhost:8000/usuarios"
+```
+
+### Criar um Pedido
+
+```bash
+curl -X POST "http://localhost:8000/pedidos" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "usuario_id": 1,
+    "produto_id": 1,
+    "quantidade": 2,
+    "entrega": true,
+    "endereco": "Rua Exemplo, 123",
+    "observacoes": "Sem observações"
+  }'
+```
+
+### Listar Pedidos
+
+```bash
+curl -X GET "http://localhost:8000/pedidos"
+```
+
 ## 📫 Contribuindo para <appBLXdoBald>
 
 Para contribuir com <appBLXdoBald>, siga estas etapas:

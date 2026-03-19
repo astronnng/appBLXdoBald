@@ -1,44 +1,54 @@
-from sqlalchemy import Column, Integer
 from pydantic import BaseModel
-from typing import Optional
-from typing import List
+from typing import Optional, List
 
-class Produtos(BaseModel):
-    id: Optional[int] = None
-    nome: Optional[str] = None
+# Schemas base para criação (input)
+class ProdutoBase(BaseModel):
+    nome: str
     descricao: Optional[str] = None
-    preco: Optional[float] = None
-    disponivel: Optional[bool] = False
+    preco: float
+    disponivel: bool = False
     usuario_id: Optional[int] = None
-    usuario: Optional['Usuario'] = None
-    pedidos: Optional[List['Pedido']] = None
+
+class ProdutoCreate(ProdutoBase):
+    pass
+
+class ProdutoResponse(ProdutoBase):
+    id: int
 
     class Config:
         from_attributes = True
 
-
-class Usuario(BaseModel):
-    id: Optional[int] = None
+# Schemas base para criação (input)
+class UsuarioBase(BaseModel):
     nome: str
     telefone: str
     senha: Optional[str] = None
-    produtos: Optional[List['Produtos']] = None
-    pedidos: Optional[List['Pedido']] = None
+
+class UsuarioCreate(UsuarioBase):
+    pass
+
+class UsuarioResponse(UsuarioBase):
+    id: int
+
     class Config:
         from_attributes = True
 
-
-class Pedido(BaseModel):
-    id: Optional[int] = None
+# Schemas base para criação (input)
+class PedidoBase(BaseModel):
     usuario_id: int
     produto_id: int
     quantidade: int
     entrega: bool = True
     endereco: str
     observacoes: Optional[str] = 'Sem observações'
-    usuario: Optional['Usuario'] = None
-    produto: Optional['Produtos'] = None
 
-Produtos.update_forward_refs()
-Usuario.update_forward_refs()
-Pedido.update_forward_refs()
+class PedidoCreate(PedidoBase):
+    pass
+
+class PedidoResponse(PedidoBase):
+    id: int
+    usuario: Optional[UsuarioResponse] = None
+    produto: Optional[ProdutoResponse] = None
+
+    class Config:
+        from_attributes = True

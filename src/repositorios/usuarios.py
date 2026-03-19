@@ -19,7 +19,11 @@ class RepositorioUsuario():
     def listar(Self):
         usuarios = Self.db.query(models.Usuario).all() #consultando todos os usuarios no banco de dados
         return usuarios
-    
+
+    def obter(Self, usuario_id: int):
+        usuario = Self.db.query(models.Usuario).filter(models.Usuario.id == usuario_id).first()
+        return usuario
+
     def remover(Self):
         pass
 

@@ -11,6 +11,7 @@ class Produtos(BaseModel):
     disponivel: Optional[bool] = False
     usuario_id: Optional[int] = None
     usuario: Optional['Usuario'] = None
+    pedidos: Optional[List['Pedido']] = None
 
     class Config:
         from_attributes = True
@@ -21,22 +22,22 @@ class Usuario(BaseModel):
     nome: str
     telefone: str
     senha: Optional[str] = None
-    meus_produtos: Optional[List['Produtos']] = None
-    minhas_vendas: Optional[List['Pedido']] = None
-    meus_pedidos: Optional[List['Pedido']] = None
-    produto_id: Optional[int] = None
+    produtos: Optional[List['Produtos']] = None
+    pedidos: Optional[List['Pedido']] = None
     class Config:
         from_attributes = True
 
 
 class Pedido(BaseModel):
-    id: Optional[str] = None
-    usuario: Usuario
-    produto: Produtos
-    quantidade: int 
+    id: Optional[int] = None
+    usuario_id: int
+    produto_id: int
+    quantidade: int
     entrega: bool = True
     endereco: str
     observacoes: Optional[str] = 'Sem observações'
+    usuario: Optional['Usuario'] = None
+    produto: Optional['Produtos'] = None
 
 Produtos.update_forward_refs()
 Usuario.update_forward_refs()

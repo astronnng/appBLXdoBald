@@ -33,6 +33,10 @@ class UsuarioResponse(UsuarioBase):
     class Config:
         from_attributes = True
 
+class LoginData(BaseModel):
+    telefone: str
+    senha: str
+
 # Schemas base para criação (input)
 class PedidoBase(BaseModel):
     usuario_id: int

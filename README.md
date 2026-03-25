@@ -83,6 +83,32 @@ curl -X POST "http://localhost:8000/usuarios" \
 curl -X GET "http://localhost:8000/usuarios"
 ```
 
+### Autenticação (Obter Token)
+
+Para realizar operações que exigem autenticação, você deve primeiro obter um token de acesso:
+
+```bash
+curl -X POST "http://localhost:8000/auth/token" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "telefone": "11999998888",
+    "senha": "senha123"
+  }'
+```
+
+A resposta conterá o `access_token`. Para usar o token em outras requisições, adicione o cabeçalho `Authorization`:
+
+```bash
+-H "Authorization: Bearer <seu_token_aqui>"
+```
+
+### Obter Usuário Logado (Perfil)
+
+```bash
+curl -X GET "http://localhost:8000/login/me" \
+  -H "Authorization: Bearer <seu_token_aqui>"
+```
+
 ### Criar um Pedido
 
 ```bash

@@ -1,10 +1,12 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+from src.infra.providers import token_providers
 from src.config.database import get_session
+from src.models.models import Usuario
 from src.repositorios.usuarios import RepositorioUsuario
-from src.schemas.schemas import UsuarioCreate, UsuarioResponse
+from src.schemas.schemas import UsuarioCreate, UsuarioResponse, LoginData
 from src.infra.providers import hash_provider
-
+from src.routers.router_util import obter_usuario_logado
 
 
 
@@ -41,3 +43,39 @@ def obter_usuario(usuario_id: int, db: Session = Depends(get_session)):
     if usuario is None:
         raise HTTPException(status_code=404, detail="Usuário não encontrado")
     return usuario
+
+@router.post("/login")
+def login(login_data: LoginData, session: Session = Depends(get_session)):
+    repositorio = RepositorioUsuario(session)
+    usuario = repositorio.buscar_por_telefone(login_data.telefone)
+
+    if not usuario:
+        raise HTTPException(status_code=404, detail="Usuário não encontrado")
+
+    if not hash_provider.verificar_hash(login_data.senha, usuario.senha):
+        raise HTTPException(status_code=401, detail="Senha incorreta")
+
+    return {"message": "Login bem-sucedido", "usuario_id": usuario.id}
+
+
+
+@router.get("/login/me", response_model=UsuarioResponse)
+def me(usuario: Usuario = Depends(obter_usuario_logado)):
+    return usuario
+
+
+@router.post("/auth/token")
+def login_token(login_data: LoginData, db: Session = Depends(get_session)):
+    repositorio = RepositorioUsuario(db)
+    usuario = repositorio.buscar_por_telefone(login_data.telefone)
+
+    if not usuario:
+        raise HTTPException(status_code=401, detail="Telefone ou senha inválidos")
+
+    if not hash_provider.verificar_hash(login_data.senha, usuario.senha):
+        raise HTTPException(status_code=401, detail="Telefone ou senha inválidos")
+
+    token = token_providers.criar_acess_token({"usuario_id": usuario.telefone})
+
+    return {"usuario": usuario, "access_token": token, "token_type": "bearer"}
+

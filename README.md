@@ -1,5 +1,7 @@
 # BLX - Sistema de Marketplace ![Python](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi) ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
+<img src="backend/repositorio_arq/imagem.png" alt="Mascote do projeto" width="200">
+
 Uma solução completa de marketplace (Frontend + Backend) para venda de produtos, combinando a robustez da API **appBLXdoBald** com uma interface moderna e responsiva.
 
 ## 🚀 Sobre o Projeto

@@ -1,190 +1,67 @@
 # appBLXdoBald
 
-![GitHub repo size](https://img.shields.io/github/repo-size/iuricode/README-template?style=for-the-badge)
-![GitHub language count](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white)
-![GitHub forks](https://img.shields.io/github/forks/iuricode/README-template?style=for-the-badge)
-![Bitbucket open issues](https://img.shields.io/bitbucket/issues/iuricode/README-template?style=for-the-badge)
-![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/iuricode/README-template?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
 
-# Mascote do projeto.
+<img src="repositorio_arq/imagem.png" alt="Mascote do projeto" width="200">
 
+> Uma REST API robusta para venda de produtos desenvolvida com **Python** e **FastAPI**.
 
-<img src="repositorio_arq/imagem.png" alt="Mascote do projeto">
-
-> App simples de vendas de produtos usando Python e FastAPI.
-
-### Ajustes e melhorias - m
-O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas para as seguintes tarefas:
-
-- [x] Criação do backend e classes
-- [x] Configurando API para requests
-- [ ] Modelagem de dados para interface
-- [ ] Testes de qualidade para estailidade
-- [ ] Finalização do projeto
+## 🚀 Status do Projeto
+O projeto foi evoluído de um app simples para uma API profissional com as seguintes melhorias:
+- [x] Backend estruturado com padrões de repositório.
+- [x] Autenticação segura usando **JWT (JSON Web Tokens)**.
+- [x] Dash de senhas usando **Argon2**.
+- [x] Containerização completa com **Docker** e **Docker Compose**.
+- [x] Banco de dados SQLite persistente.
+- [x] Remoção de frontend legado para foco total em API.
 
 ## 💻 Pré-requisitos
+- Python 3.11+ (se rodar localmente)
+- Docker e Docker Compose (recomendado)
 
-Antes de começar, verifique se você atendeu aos seguintes requisitos:
+## 🛠️ Instalação e Uso
 
-- Você instalou a versão mais recente de `<python / pydantic / BaseModel / Optional>`
-- Você tem uma máquina `<Windows / Linux / Mac>`. Compativel com todos os OS.
-
-## ☕ Usando <appBLXdoBald>
-
-Para usar <appBLXdoBald>, siga estas etapas:
-
-```
-Suba seu FastAPI com ambiente env em Pyhton e use o insonimia ou Postman para estar realizando requisições
-```
-
-## 📦 Exemplos de Requisições
-
-Com base nos modelos definidos em `src/models/models.py`, a API oferece as seguintes entidades:
-
-- **Produto** (`/produtos`)
-- **Usuário** (`/usuarios`)
-- **Pedido** (`/pedidos`)
-
-### Criar um Produto
-
+### Opção 1: Via Docker (Recomendado)
+Docker é a forma mais fácil de subir o ambiente completo com persistência de dados.
 ```bash
-curl -X POST "http://localhost:8000/produtos" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "nome": "Camiseta",
-    "descricao": "Camiseta 100% algodão",
-    "preco": 49.90,
-    "disponivel": true,
-    "usuario_id": 1
-  }'
+docker-compose up --build
 ```
+A API estará disponível em `http://localhost:8000`.
 
-### Listar Produtos
+### Opção 2: Localmente
+1. Crie e ative o ambiente virtual:
+   ```bash
+   python -m venv .venv
+   .\.venv\Scripts\activate
+   ```
+2. Instale as dependências:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Inicie o servidor:
+   ```bash
+   uvicorn src.server:app --reload
+   ```
 
-```bash
-curl -X GET "http://localhost:8000/produtos"
-```
+## 📖 Documentação da API
+Após subir a API, acesse a documentação interativa:
+- **Swagger UI**: [http://localhost:8000/docs](http://localhost:8000/docs)
+- **ReDoc**: [http://localhost:8000/redoc](http://localhost:8000/redoc)
 
-### Criar um Usuário
+## 📦 Principais Endpoints
 
-```bash
-curl -X POST "http://localhost:8000/usuarios" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "nome": "João Silva",
-    "telefone": "11999998888",
-    "senha": "senha123"
-  }'
-```
+### Autenticação
+- `POST /auth/token`: Gera o token de acesso (login).
+- `GET /login/me`: Retorna o perfil do usuário logado.
 
-### Listar Usuários
+### Produtos
+- `GET /produtos`: Lista todos os produtos.
+- `POST /produtos`: Cria um novo produto (Requer Auth).
 
-```bash
-curl -X GET "http://localhost:8000/usuarios"
-```
-
-### Autenticação (Obter Token)
-
-Para realizar operações que exigem autenticação, você deve primeiro obter um token de acesso:
-
-```bash
-curl -X POST "http://localhost:8000/auth/token" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "telefone": "11999998888",
-    "senha": "senha123"
-  }'
-```
-
-A resposta conterá o `access_token`. Para usar o token em outras requisições, adicione o cabeçalho `Authorization`:
-
-```bash
--H "Authorization: Bearer <seu_token_aqui>"
-```
-
-### Obter Usuário Logado (Perfil)
-
-```bash
-curl -X GET "http://localhost:8000/login/me" \
-  -H "Authorization: Bearer <seu_token_aqui>"
-```
-
-### Criar um Pedido
-
-```bash
-curl -X POST "http://localhost:8000/pedidos" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "usuario_id": 1,
-    "produto_id": 1,
-    "quantidade": 2,
-    "entrega": true,
-    "endereco": "Rua Exemplo, 123",
-    "observacoes": "Sem observações"
-  }'
-```
-
-### Listar Pedidos
-
-```bash
-curl -X GET "http://localhost:8000/pedidos"
-```
-
-## 📫 Contribuindo para <appBLXdoBald>
-
-Para contribuir com <appBLXdoBald>, siga estas etapas:
-
-1. Bifurque este repositório.
-2. Crie um branch: `git checkout -b <nome_branch>`.
-3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
-4. Envie para o branch original: `git push origin <appBLXdoBald> / <local>`
-5. Crie a solicitação de pull.
-
-## 🤝 Los cuatro melhores
-
-Agradecemos às seguintes pessoas que contribuíram para este projeto:
-
-<table>
-  <tr>
-    <td align="center">
-      <a href="#" title="defina o título do link">
-        <img src="https://pbs.twimg.com/profile_images/1840032466981052416/Y812LtWV.jpg" width="100px;" alt="Foto do rengar"/><br>
-        <sub>
-          <b>Alexandre Rengar</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#" title="defina o título do link">
-        <img src="https://i.imgur.com/hTMg2Kt.jpeg" width="80px;" alt="Foto do jhin do alan"/><br>
-        <sub>
-          <b>Jhin Opressor</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#" title="defina o título do link">
-        <img src="https://media.discordapp.net/attachments/1257661583732244500/1459188676436299776/59293832.png?ex=69625eda&is=69610d5a&hm=b2de8d7f22e00a6d7d8efc476ae338d5f07b8a9149f196a74c28986bc6dfe1f3&=&format=webp&quality=lossless&width=499&height=499" width="100px;" alt="Foto do yasuo do vasco"/><br>
-        <sub>
-          <b>Cadu do vasco</b>
-        </sub>
-      </a>
-      </td>
-    <td align="center">
-      <a href="#" title="defina o título do link">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnamLoOyC8j5lENbcDFLAc-IqiiCdTAEqMGQ&s" width="80px;" alt="Foto do Delfito pelado"/><br>
-        <sub>
-          <b>Bruno delfyters</b>
-        </sub>
-      </a>
-    </td>
-  </tr>
-</table>
-
-## 😄 Seja um dos contribuidores
-
-Quer fazer parte desse projeto? Clique [AQUI](CONTRIBUTING.md) e leia como contribuir.
+### Pedidos
+- `GET /pedidos`: Lista os pedidos do usuário autenticado.
+- `POST /pedidos`: Realiza um novo pedido.
 
 ## 📝 Licença
-
-Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
+Este projeto está sob a licença [MIT](LICENSE.md).

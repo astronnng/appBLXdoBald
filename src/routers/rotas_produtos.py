@@ -6,7 +6,7 @@ from src.schemas.schemas import ProdutoCreate, ProdutoResponse
 
 router = APIRouter()
 
-@router.post("/produtos", response_model=ProdutoResponse)
+@router.post("/produtos", response_model=ProdutoResponse, status_code=201)
 def criar_produto(produto: ProdutoCreate, db: Session = Depends(get_session)):
     produto_criado = RepositorioProduto(db).criar(produto)
     return produto_criado

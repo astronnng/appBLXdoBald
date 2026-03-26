@@ -1,3 +1,4 @@
+from src.schemas.schemas import LoginSucesso
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from src.infra.providers import token_providers
@@ -11,7 +12,7 @@ from src.routers.router_util import obter_usuario_logado
 
 
 router = APIRouter()
-@router.post("/usuarios", response_model=UsuarioResponse)
+@router.post("/usuarios", response_model=UsuarioResponse, status_code=201)
 def criar_usuario(usuario: UsuarioCreate, db: Session = Depends(get_session)):
     
     
@@ -44,7 +45,7 @@ def obter_usuario(usuario_id: int, db: Session = Depends(get_session)):
         raise HTTPException(status_code=404, detail="Usuário não encontrado")
     return usuario
 
-@router.post("/login")
+@router.post("/login", response_model=LoginSucesso)
 def login(login_data: LoginData, session: Session = Depends(get_session)):
     repositorio = RepositorioUsuario(session)
     usuario = repositorio.buscar_por_telefone(login_data.telefone)
@@ -55,7 +56,9 @@ def login(login_data: LoginData, session: Session = Depends(get_session)):
     if not hash_provider.verificar_hash(login_data.senha, usuario.senha):
         raise HTTPException(status_code=401, detail="Senha incorreta")
 
-    return {"message": "Login bem-sucedido", "usuario_id": usuario.id}
+    token = token_providers.criar_acess_token({"usuario_id": usuario.telefone})
+
+    return LoginSucesso(usuario=usuario, acesso_token=token)
 
 
 
@@ -77,5 +80,6 @@ def login_token(login_data: LoginData, db: Session = Depends(get_session)):
 
     token = token_providers.criar_acess_token({"usuario_id": usuario.telefone})
 
-    return {"usuario": usuario, "access_token": token, "token_type": "bearer"}
+    return LoginSucesso(usuario=usuario, acesso_token=token)
+
 

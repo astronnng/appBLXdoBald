@@ -1,5 +1,4 @@
 from fastapi import FastAPI, Depends, Request, BackgroundTasks
-from fastapi.staticfiles import StaticFiles
 import time
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
@@ -30,8 +29,6 @@ def send_email(email: str, background: BackgroundTasks):
     return {"message": "Email enviado com sucesso"}
 
 
-# Servir Frontend (Arquivos Estáticos)
-app.mount("/", StaticFiles(directory="public", html=True), name="public")
 
 
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])

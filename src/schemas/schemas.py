@@ -37,6 +37,18 @@ class LoginData(BaseModel):
     telefone: str
     senha: str
 
+class UsuarioSimples(BaseModel):
+    id: int
+    nome: str
+    telefone: str
+
+    class Config:
+        from_attributes = True
+
+class LoginSucesso(BaseModel):
+    usuario: UsuarioSimples
+    acesso_token: str
+
 # Schemas base para criação (input)
 class PedidoBase(BaseModel):
     usuario_id: int

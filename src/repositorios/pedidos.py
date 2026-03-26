@@ -40,3 +40,9 @@ class RepositorioPedido:
             self.db.delete(pedido)
             self.db.commit()
         return pedido
+
+    def listar_meus_pedidos_por_usuario_id(self, usuario_id: int):
+        return self.db.query(models.Pedido).options(
+            joinedload(models.Pedido.usuario),
+            joinedload(models.Pedido.produto)
+        ).filter(models.Pedido.usuario_id == usuario_id).all()

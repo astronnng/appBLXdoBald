@@ -1,1 +1,7 @@
-python-jose==3.5.0
+fastapi
+uvicorn
+sqlalchemy
+python-jose[cryptography]
+pwdlib[argon2]
+python-multipart
+pyjwt

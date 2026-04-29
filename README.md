@@ -41,7 +41,8 @@ A API estará disponível em `http://localhost:8000`.
    ```
 3. Inicie o servidor:
    ```bash
-   uvicorn src.server:app --reload
+   # Usar o launcher garante instalação das dependências no mesmo Python
+   python start.py
    ```
 
 ## 📖 Documentação da API

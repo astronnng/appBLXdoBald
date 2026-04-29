@@ -20,6 +20,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application
 COPY . .
 
+# Ensure data directory exists for SQLite (used by docker-compose volume)
+RUN mkdir -p /app/data
+
 # Expose the API port
 EXPOSE 8000
 

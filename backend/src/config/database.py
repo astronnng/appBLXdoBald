@@ -2,9 +2,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, Session
 from typing import Annotated
 from fastapi import Depends
+import os
 
 # Nome e URL do banco de dados (neste caso, SQLite)
-DB_FILE = "blx_banco.db"
+# Agora lido via variável de ambiente para permitir portabilidade
+DB_FILE = os.getenv("DB_FILE", "data/blx_banco.db")
 sqlite_url = f"sqlite:///{DB_FILE}"
 
 # Base para os modelos SQLAlchemy

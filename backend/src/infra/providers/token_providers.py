@@ -1,11 +1,12 @@
 from datetime import datetime, timedelta
 from jose import jwt
+import os
 
 
-# CONFIG
-SECRET_KEY = "nossa_que_chavao"
-ALGORITHM = "HS256"
-EXPIRES_IN_MIN = 160
+# CONFIG via environment for portability and security
+SECRET_KEY = os.getenv("SECRET_KEY", "nossa_que_chavao")
+ALGORITHM = os.getenv("JWT_ALGORITHM", "HS256")
+EXPIRES_IN_MIN = int(os.getenv("JWT_EXPIRES_MINUTES", "160"))
 
 
 def criar_acess_token(data: dict):
